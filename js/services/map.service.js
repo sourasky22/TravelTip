@@ -58,11 +58,13 @@ function addMarker(loc) {
                 map: map,
                 icon: 'img/marker.png'
             });
+            console.log('adding marker');
 }
 
 
 function setCenter(loc) {
     map.setCenter(loc);
+    console.log('marker set center');
 }
 
 function getWeather(loc) {

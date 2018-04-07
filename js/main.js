@@ -10,11 +10,11 @@ locService.getLocs()
 
     window.onload = ()=>{
     mapService.initMap()
-    .then(
-        ()=>{
-            mapService.addMarker({lat: 32.0749831, lng: 34.9120554});
-        }
-    );
+    // .then(
+    //     ()=>{
+    //         mapService.addMarker({lat: 32.0749831, lng: 34.9120554});
+    //     }
+    // );
     locService.getPosition()
         .then(pos => {
             var loc = {

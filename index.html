@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ES6</title>
+</head>
+
+<body>
+    
+     <header class="flex align-center">
+     <div class="flex weather-info align-center">
+     </div>
+     <img class="logo" src="img/logo3.gif" alt="">
+     <img class="logo-mobile" src="img/logo.jpg" alt="">
+     </header>
+
+    <div id="map">
+    </div>
+   
+    <form class="search flex">
+        <input id="autocomplete" class="search-loc" name="location" type="text" placeholder="Enter location">
+        <button class="goto-loc">&#128269;</button>
+    </form>
+     
+    <div class="location-btns">
+        <button class="copy-loc">🔗</button>
+        <button class="my-loc">My location</button>
+    </div>
+
+    <div class="dropdown">
+        <button class="weather">
+            <img src="img/thermometer.png" alt="">
+        </button>
+        <div class="dropdown-content weather-info-btn flex">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
+

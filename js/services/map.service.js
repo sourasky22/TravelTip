@@ -2,6 +2,8 @@ import { GoogleMapsApi } from './gmap.class.js';
 
 var map;
 
+var marker;
+
 var service;
 
 
@@ -12,54 +14,53 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     const gmapApi = new GoogleMapsApi();
     return gmapApi.load()
         .then(() => {
-        map = new google.maps.Map(
-            document.querySelector('#map'), {
-                center: { lat, lng },
-                zoom: 15,
-                zoomControl: true,
-                mapTypeControl: true,
-                mapTypeControlOptions: {
-                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-                    position: google.maps.ControlPosition.LEFT_BOTTOM
-                },
-                scaleControl: true,
-                streetViewControl: true,
-                rotateControl: true,
-                fullscreenControl: true,
-                mapTypeControl: true,
-                disableDefaultUI: true
-            })
-               //////////auto complete for search input/////////
-               var defaultBounds = new google.maps.LatLngBounds(
+            map = new google.maps.Map(
+                document.querySelector('#map'), {
+                    center: { lat, lng },
+                    zoom: 15,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                        position: google.maps.ControlPosition.LEFT_BOTTOM
+                    }
+                })
+            //////////auto complete for search input/////////
+            var defaultBounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(-33.8902, 151.1759),
                 new google.maps.LatLng(-33.8474, 151.2631));
-                var options = {
+            var options = {
                 bounds: defaultBounds,
-              };
-               var input = document.getElementById('autocomplete');
-               var autocomplete = new google.maps.places.Autocomplete(input, options);
-               /////////////adding new btns to map controls///////////
-                var search = document.querySelector('.search');
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
-                var myLoc = document.querySelector('.location-btns');
-                map.controls[google.maps.ControlPosition.TOP_RIGHT].push(myLoc);
-                var weather = document.querySelector('.dropdown');
-                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(weather);
-            });
+            };
+            var input = document.getElementById('autocomplete');
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+            /////////////adding new btns to map controls///////////
+            var search = document.querySelector('.search');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
+            var myLoc = document.querySelector('.location-btns');
+            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(myLoc);
+            var weather = document.querySelector('.dropdown');
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(weather);
+        });
 }
-
-  
-
 
 
 function addMarker(loc) {
-            var marker = new google.maps.Marker({
-                position: loc,
-                map: map,
-                icon: 'img/marker.png'
-            });
-            console.log('adding marker');
+    marker = new google.maps.Marker({
+        position: loc,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon: 'img/marker.png'
+    });
+    marker.addListener('click', toggleBounce);
+    console.log('adding marker');
 }
+
+function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
 
 
 function setCenter(loc) {
@@ -70,7 +71,7 @@ function setCenter(loc) {
 function getWeather(loc) {
     return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${loc.lat}&lon=${loc.lng}&APPID=cbec6861886248c18ee69495f839b772`)
         .then(function (res) {
-            console.log('weather data',res.data);
+            console.log('weather data', res.data);
             renderWeather(res.data);
         })
 }
@@ -86,7 +87,7 @@ function renderWeather(weather) {
    <img class="weather-icon" src="https://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="">
   </div>
 `;
-  var strHtmlBtn = `
+    var strHtmlBtn = `
   <p>Current Weather</p> 
   <h2 id="city">${weather.name}, ${weather.sys.country}</h2>
   <h3 id="desc">${weather.weather[0].description}</h3> 
@@ -99,19 +100,19 @@ function renderWeather(weather) {
     elWeatherBtn.innerHTML = strHtmlBtn;
 }
 
-function copyUrl(text){
-  var textArea = document.createElement("textarea");
-  textArea.value = text;
-  document.body.appendChild(textArea);
-  textArea.select();
-  try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
-  } catch (err) {
-    console.log('Oops, unable to copy');
-  }
-  document.body.removeChild(textArea);
+function copyUrl(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+    document.body.removeChild(textArea);
 }
 
 

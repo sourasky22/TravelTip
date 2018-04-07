@@ -68,7 +68,7 @@ function setCenter(loc) {
 }
 
 function getWeather(loc) {
-    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${loc.lat}&lon=${loc.lng}&APPID=cbec6861886248c18ee69495f839b772`)
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${loc.lat}&lon=${loc.lng}&APPID=cbec6861886248c18ee69495f839b772`)
         .then(function (res) {
             console.log('weather data',res.data);
             renderWeather(res.data);

@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0 auto;
 }
 
@@ -11,7 +11,7 @@ body{
     height: calc(100vh - 80px);
 }
 
-header{
+header {
     background: #122536;
     height: 80px;
     width: 100%;
@@ -19,12 +19,12 @@ header{
     justify-content: space-between;
 }
 
-.location-btns{
+.location-btns {
     margin-top: 21px;
     margin-right: 13px;
 }
 
-.my-loc{
+.my-loc {
     background: #fff ;
        border: 2px solid #fff;
         border-radius: 3px;
@@ -33,7 +33,7 @@ header{
         height: 35px;
 }
 
-.copy-loc{
+.copy-loc {
     background: #fff ;
        border: 2px solid #fff;
         /* border-radius: 8px; */
@@ -45,7 +45,7 @@ header{
 }
 
 
-.search{
+.search {
     background: #fff ;
        border: 2px solid #fff;
         border-radius: 3px;
@@ -63,13 +63,13 @@ header{
     background: #fff;
 }
 
-.goto-loc{
+.goto-loc {
     height: 34px;
     border-radius: 2px;
     background: #fff;
 }
 
-.weather{
+.weather {
         background: #fff ;
         border: 2px solid #fff;
         border-radius: 3px;
@@ -81,7 +81,7 @@ header{
         padding: 0;
 }
 
-.weather-info{
+.weather-info {
     height: 50px;
     margin: 0;
     border: 1px solid white;
@@ -91,7 +91,7 @@ header{
     margin-left: 10px;
 }
 
-.weather-info-btn{
+.weather-info-btn {
     background: #fff;
      border-radius: 10px; 
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
@@ -102,14 +102,14 @@ header{
     width: auto;
 }
 
-#temp{
+#temp {
     font-size: 26px;
     line-height: 26px;
     margin-left: 10px;
 }
 
 
-.dropdown-content{
+.dropdown-content {
     position: absolute;
     flex-direction: column;
     justify-content: space-around;
@@ -123,19 +123,19 @@ header{
     padding-bottom: 0px;
   }
 
-.dropdown:hover > .dropdown-content{
+.dropdown:hover > .dropdown-content {
     opacity: 1;   
     visibility: visible;
     transform: translate(-190px, -280px);
 }
 
 
-#city{
+#city {
     font-size: 20px;
     margin: 0;
 }
 
-.logo{
+.logo {
     margin-right: 20px;
     height: 72px;
     width: auto;
@@ -206,11 +206,11 @@ display: none;
         height: calc(100vh - 60px);
     }
 
-    header{
+    header {
         height: 60px;
     }
 
-    .logo{
+    .logo {
         height: 58px;
      }
 
@@ -221,12 +221,12 @@ display: none;
     .location-btns {
         margin-top: 50px;
     }
-    .search{
+    .search {
         width: 100vw;
         margin-left: 0;
         margin-top: 0;
     }
-    .search-loc{
+    .search-loc {
         width: 90%;
     }
     .goto-loc {
@@ -237,7 +237,7 @@ display: none;
         display: none;
     }
 
-    header{
+    header {
         justify-content: center;
     }
 
@@ -245,7 +245,7 @@ display: none;
         display: block;
         }
 
-        .logo{
+        .logo {
             display: none;
          }
 }

@@ -83,7 +83,7 @@ function renderWeather(weather) {
  <h2 id="city">${weather.name}</h2>
   <div class="clean-list flex align-center">
    <h1 id="temp">${Math.floor(weather.main.temp - 273.15)}<span>&#176;</span></h1>
-   <img class="weather-icon" src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="">
+   <img class="weather-icon" src="https://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="">
   </div>
 `;
   var strHtmlBtn = `
@@ -92,7 +92,7 @@ function renderWeather(weather) {
   <h3 id="desc">${weather.weather[0].description}</h3> 
    <div class="clean-list flex align-center">
     <h1 id="temp">${Math.floor(weather.main.temp - 273.15)}<span>&#176;</span></h1>
-    <img class="weather-icon" src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="">
+    <img class="weather-icon" src="https://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="">
    </div>
  `;
     elWeather.innerHTML = strHtml;
